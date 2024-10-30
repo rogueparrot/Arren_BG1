@@ -1,9 +1,0 @@
-BACKUP ~Arren/Backup~ 
-AUTHOR ~moggadeet~ 
-VERSION ~alpha~ 
-AUTO_TRA ~Arren/tra/%s~
-
-LANGUAGE ~English~ ~English~
-
-BEGIN ~Arren NPC mod for Baldur's Gate: Enhanced Edition~
-INCLUDE ~%MOD_FOLDER%/lib/Arren.tpa~
