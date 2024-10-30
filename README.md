@@ -11,6 +11,7 @@ It is still missing:
 6. A soundset
 7. A less terrible portrait
 8. (very, very eventually) a custom kit
+9. Any actual reactivity to the PC being a shaman (sorry)
 
 Currently it features:
 1. A small recruitment quest
