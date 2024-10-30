@@ -1,0 +1,19 @@
+//dream script
+
+//quest complete - rest talk
+
+IF
+
+	InParty(Myself)
+    See(Player1)
+    CombatCounter(0)
+    !See([ENEMY])
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    !StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("L0ArrEddard","GLOBAL",2)
+THEN
+	RESPONSE #100
+	SetGlobal("L0ArrEddard","GLOBAL",3)
+	StartDialogueNoSet(Player1)
+END
+

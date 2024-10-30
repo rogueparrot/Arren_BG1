@@ -1,0 +1,126 @@
+EXTEND_TOP ~AR3304.bcs~ ~Arren/scripts/AR3304.baf~
+
+APPEND ~STATE.IDS~ ~0x80101FEF CD_STATE_NOTVALID~
+UNLESS ~CD_STATE_NOTVALID~
+
+COPY ~%MOD_FOLDER%/Portraits/L0ArrenL.bmp~ ~override~
+COPY ~%MOD_FOLDER%/Portraits/L0ArrenM.bmp~ ~override~
+COPY ~%MOD_FOLDER%/Portraits/L0ArrenS.bmp~ ~override~
+
+COPY ~Arren/Characters/L0Arren.cre~ ~override/L0Arren.cre~
+SAY NAME1 ~Arren~
+SAY NAME2 ~Arren~
+SAY INITIAL_MEETING ~Charmed.~
+SAY MORALE ~I won't die here.~
+SAY HAPPY ~Tolerable.~
+SAY UNHAPPY_ANNOYED ~I'm beginning to lose patience.~
+SAY UNHAPPY_SERIOUS ~The dead make better company.~
+SAY UNHAPPY_BREAKING ~I can't do this anymore.~
+SAY LEADER ~No.~
+SAY TIRED ~We're wasting our time here.~
+SAY BORED ~Mind if I smoke? Then stand downwind.~
+SAY BATTLE_CRY1 ~Die already.~
+SAY BATTLE_CRY2 ~~
+SAY BATTLE_CRY3 ~~
+SAY BATTLE_CRY4 ~~
+SAY BATTLE_CRY5 ~~
+SAY DAMAGE ~Bleeding.~
+SAY DYING ~Should have expected.~
+SAY HURT ~I just talk to the dead, I don't want to join them.~
+SAY AREA_FOREST ~Quiet here. I like it.~
+SAY AREA_CITY ~Too many people, and that's just the living ones.~
+SAY AREA_DUNGEON ~The dead are never far here. Can you feel them watching you?~
+SAY AREA_DAY ~Sun's too bright.~
+SAY AREA_NIGHT ~~
+SAY SELECT_COMMON1 ~Yes?~
+SAY SELECT_COMMON2 ~Ask.~
+SAY SELECT_COMMON3 ~What.~
+SAY SELECT_COMMON4 ~Must you?~
+SAY SELECT_COMMON5 ~Don't you have better things to do?~
+SAY SELECT_COMMON6 ~~
+SAY SELECT_ACTION1 ~A waste of my skill.~
+SAY SELECT_ACTION2 ~If you insist.~
+SAY SELECT_ACTION3 ~As you would.~
+SAY SELECT_ACTION4 ~Might as well.~
+SAY SELECT_ACTION5 ~Why not.~
+SAY SELECT_ACTION6 ~I suppose.~
+SAY SELECT_ACTION7 ~~
+SAY SELECT_RARE1 ~~
+SAY SELECT_RARE2 ~~
+SAY CRITICAL_HIT ~Die.~
+SAY CRITICAL_MISS ~Ugh.~
+SAY TARGET_IMMUNE ~Waste of time.~
+SAY INVENTORY_FULL ~Carry your own junk.~
+SAY SPELL_DISRUPTED ~Lost my spell.~
+SAY BIO ~When asked about her past, Arren responds that it's none of your concern. After a moment, she begrudgingly explains that she hails from Cormanthor, but has called Baldur's Gate home since she developed her strange link to the dead. She runs a moderately successful business investigating missing persons cases. Further inquiries simply result in her passing you a card labeled "T. Arren, consulting medium: dead men do tell tales" and lighting one of her disgusting pipeweed rollups, the conversation clearly at an end.~
+WRITE_ASCII 0x248 ~L0ArrenS~ #8
+WRITE_ASCII 0x2cc ~L0Arren~  #8
+WRITE_ASCII 0x280 ~L0Arren~  #32 
+/*WRITE_ASCII 0x34 ~L0ArrenM~ #8 //portrait - small
+WRITE_ASCII 0x3c  ~L0ArrenL~ #8 //portrait - medium*/
+
+COMPILE ~%MOD_FOLDER%/Dialogue/L0Arren.d~
+		~%MOD_FOLDER%/Dialogue/L0BArren.d~
+		~%MOD_FOLDER%/Dialogue/L0ArrenJ.d~
+		~%MOD_FOLDER%/Dialogue/L0ArrenP.d~
+		~%MOD_FOLDER%/Scripts/L0ArrenS.baf~
+		~%MOD_FOLDER%/Scripts/L0ArrenD.baf~
+
+APPEND ~pdialog.2da~
+~L0Arren	L0ArrenJ	L0ArrenP	L0ArrenD~
+UNLESS ~L0Arren~
+
+APPEND ~interdia.2da~
+~L0Arren	L0BArren~
+UNLESS ~L0Arren~
+
+COPY ~%MOD_FOLDER%/Items/L0aleat1.bam~ ~override~
+COPY ~%MOD_FOLDER%/Items/L0aleat1.itm~ ~override/L0aleat1.itm~
+SAY NAME1 ~Shade's Blessing~
+SAY NAME2 ~Shade's Blessing~
+SAY DESC ~Dark, stylish, and possessed of innumerable hidden pockets, this armor is just the thing for a medium on the go.
+
+STATISTICS:
+
+Armor Class: 7 (9 vs. piercing and missile)
+Requires:
+ 4 Strength
+
+Weight: 10~
+
+COPY ~%MOD_FOLDER%/Items/L0abow1.itm~ ~override/L0abow1.itm~
+SAY NAME1 ~Arren's bow~
+SAY NAME2 ~Arren's bow~
+SAY DESC ~This sleek, elegant bow is old but well cared for.~
+
+COPY ~%MOD_FOLDER%/Items/L0aknif1.itm~ ~override/L0aknif1.itm~
+SAY NAME1 ~Arren's knife~
+SAY NAME2 ~Arren's knife~
+SAY DESC ~Single-edged and wickedly sharp. Arren claims that she uses it to open letters.
+
+STATISTICS:
+
+THAC0: +1
+Damage: 1d4+1 (piercing)
+Speed Factor: 1
+Proficiency Type: Dagger
+Type: One-handed
+Requires:
+ 3 Strength
+
+Weight: 1~
+
+COPY ~%MOD_FOLDER%/Items/L0card01.itm~ ~override/L0card01.itm~
+SAY NAME1 ~Arren's card~
+SAY NAME2 ~Arren's card~
+SAY DESC ~This small square of yellowed paper reads: "T. Arren, consulting medium: dead men do tell tales." It stinks of pipeweed.~
+
+COPY_EXISTING ~larria.cre~ ~override/L0ASGH.cre~
+WRITE_ASCII 0x248 ~L0ASGH~ #8	// override
+WRITE_ASCII 0x2cc ~L0ASGH~ #8  // dialogue
+WRITE_ASCII 0x280 ~L0ASGH~ #32 // death variable
+SAY NAME1 ~Larriaz~
+SAY NAME2 ~Larriaz~
+ADD_CRE_ITEM ~ghost~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~LRING~
+
+EXTEND_BOTTOM ~AR1209.bcs~ ~%MOD_FOLDER%/Scripts/AR1209.baf~

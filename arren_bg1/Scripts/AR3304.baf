@@ -1,0 +1,22 @@
+//AR3304, Jovial Juggler
+
+IF
+Global("L0ArrenSpawn","GLOBAL",0)
+THEN
+RESPONSE #100
+CreateCreature("L0Arren",[680.1081],6)
+SetGlobal("L0ArrenSpawn","GLOBAL",1)
+Continue()
+END
+
+IF
+InParty("L0Arren")
+Global("L0ArrenXPSet","GLOBAL",0)
+XPLT(Player1,3000)
+XPGT(Player1,2000)
+THEN
+RESPONSE #100
+AddXPObject("L0Arren",3000)
+SetGlobal("L0ArrenXPSet","GLOBAL",1)
+Continue()
+END
